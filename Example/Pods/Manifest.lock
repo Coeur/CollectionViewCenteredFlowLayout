@@ -1,0 +1,16 @@
+PODS:
+  - CollectionViewCenteredFlowLayout (1.0.0)
+
+DEPENDENCIES:
+  - CollectionViewCenteredFlowLayout (from `..`)
+
+EXTERNAL SOURCES:
+  CollectionViewCenteredFlowLayout:
+    :path: ".."
+
+SPEC CHECKSUMS:
+  CollectionViewCenteredFlowLayout: 446fcaeb54eee1abbb902c50caac6b2fdcfe3b83
+
+PODFILE CHECKSUM: 3fa6777a7a1e9edde6c8ce74fd0509ef089b71f2
+
+COCOAPODS: 1.2.1

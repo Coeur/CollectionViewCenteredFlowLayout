@@ -1,0 +1,6 @@
+use_frameworks!
+platform :ios, "8.0"
+
+target :CollectionViewCenteredFlowLayout do
+  pod 'CollectionViewCenteredFlowLayout', :path => '..'
+end
