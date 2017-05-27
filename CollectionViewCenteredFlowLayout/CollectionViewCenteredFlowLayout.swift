@@ -37,46 +37,58 @@ open class CollectionViewCenteredFlowLayout: UICollectionViewFlowLayout {
         var representedElements: [UICollectionViewLayoutAttributes] = []
         var cells: [[UICollectionViewLayoutAttributes]] = [[]]
         var previousFrame: CGRect? = nil
-        for layoutAttributes in layoutAttributesForElements {
-            guard layoutAttributes.representedElementKind == nil else {
-                representedElements.append(layoutAttributes)
-                continue
-            }
-            let currentItemAttributes = layoutAttributes.copy() as! UICollectionViewLayoutAttributes
-            if previousFrame != nil {
-                if scrollDirection == .vertical {
-                    // if the current frame, once stretched to the full row intersects the previous frame then they are on the same row
-                    if !currentItemAttributes.frame.intersects(CGRect(x: -.infinity, y: previousFrame!.origin.y, width: .infinity, height: previousFrame!.size.height)) {
-                        // the item is on a different row
-                        cells.append([])
-                    }
-                } else {
-                    // if the current frame, once stretched to the full column intersects the previous frame then they are on the same column
-                    if !currentItemAttributes.frame.intersects(CGRect(x: previousFrame!.origin.x, y: -.infinity, width: previousFrame!.size.width, height: .infinity)) {
-                        // the item is on a different column
-                        cells.append([])
-                    }
+        if scrollDirection == .vertical {
+            for layoutAttributes in layoutAttributesForElements {
+                guard layoutAttributes.representedElementKind == nil else {
+                    representedElements.append(layoutAttributes)
+                    continue
                 }
+                let currentItemAttributes = layoutAttributes.copy() as! UICollectionViewLayoutAttributes
+                // if the current frame, once stretched to the full row doesn't intersect the previous frame then they are on different rows
+                if previousFrame != nil && !currentItemAttributes.frame.intersects(CGRect(x: -.infinity, y: previousFrame!.origin.y, width: .infinity, height: previousFrame!.size.height)) {
+                    cells.append([])
+                }
+                cells[cells.endIndex - 1].append(currentItemAttributes)
+                previousFrame = currentItemAttributes.frame
             }
-            cells[cells.endIndex - 1].append(currentItemAttributes)
-            previousFrame = currentItemAttributes.frame
-        }
-        return representedElements + cells.flatMap { group -> [UICollectionViewLayoutAttributes] in
-            guard !group.isEmpty else {
-                return group
-            }
-            let section = group.first!.indexPath.section
-            let evaluatedSectionInset = (collectionView.delegate as? UICollectionViewDelegateFlowLayout)?.collectionView?(collectionView, layout: self, insetForSectionAt: section) ?? sectionInset
-            let evaluatedMinimumInteritemSpacing = (collectionView.delegate as? UICollectionViewDelegateFlowLayout)?.collectionView?(collectionView, layout: self, minimumInteritemSpacingForSectionAt: section) ?? minimumInteritemSpacing
-            if scrollDirection == .vertical {
+            // we reposition all elements
+            return representedElements + cells.flatMap { group -> [UICollectionViewLayoutAttributes] in
+                guard let section = group.first?.indexPath.section else {
+                    return group
+                }
+                let evaluatedSectionInset = evaluatedSectionInsetForSection(at: section)
+                let evaluatedMinimumInteritemSpacing = evaluatedMinimumInteritemSpacingForSection(at: section)
                 var origin = (collectionView.bounds.width + evaluatedSectionInset.left - evaluatedSectionInset.right - group.reduce(0, { $0 + $1.frame.size.width }) - CGFloat(group.count - 1) * evaluatedMinimumInteritemSpacing) / 2
+                // we reposition each element of a group
                 return group.map {
                     $0.frame.origin.x = origin
                     origin += $0.frame.size.width + evaluatedMinimumInteritemSpacing
                     return $0
                 }
-            } else {
+            }
+        } else {
+            for layoutAttributes in layoutAttributesForElements {
+                guard layoutAttributes.representedElementKind == nil else {
+                    representedElements.append(layoutAttributes)
+                    continue
+                }
+                let currentItemAttributes = layoutAttributes.copy() as! UICollectionViewLayoutAttributes
+                // if the current frame, once stretched to the full column doesn't intersect the previous frame then they are on different columns
+                if previousFrame != nil && !currentItemAttributes.frame.intersects(CGRect(x: previousFrame!.origin.x, y: -.infinity, width: previousFrame!.size.width, height: .infinity)) {
+                    cells.append([])
+                }
+                cells[cells.endIndex - 1].append(currentItemAttributes)
+                previousFrame = currentItemAttributes.frame
+            }
+            // we reposition all elements
+            return representedElements + cells.flatMap { group -> [UICollectionViewLayoutAttributes] in
+                guard let section = group.first?.indexPath.section else {
+                    return group
+                }
+                let evaluatedSectionInset = evaluatedSectionInsetForSection(at: section)
+                let evaluatedMinimumInteritemSpacing = evaluatedMinimumInteritemSpacingForSection(at: section)
                 var origin = (collectionView.bounds.height + evaluatedSectionInset.top - evaluatedSectionInset.bottom - group.reduce(0, { $0 + $1.frame.size.height }) - CGFloat(group.count - 1) * evaluatedMinimumInteritemSpacing) / 2
+                // we reposition each element of a group
                 return group.map {
                     $0.frame.origin.y = origin
                     origin += $0.frame.size.height + evaluatedMinimumInteritemSpacing
@@ -84,5 +96,14 @@ open class CollectionViewCenteredFlowLayout: UICollectionViewFlowLayout {
                 }
             }
         }
+    }
+}
+
+extension UICollectionViewFlowLayout {
+    internal func evaluatedSectionInsetForSection(at section: Int) -> UIEdgeInsets {
+        return (collectionView?.delegate as? UICollectionViewDelegateFlowLayout)?.collectionView?(collectionView!, layout: self, insetForSectionAt: section) ?? sectionInset
+    }
+    internal func evaluatedMinimumInteritemSpacingForSection(at section: Int) -> CGFloat {
+        return (collectionView?.delegate as? UICollectionViewDelegateFlowLayout)?.collectionView?(collectionView!, layout: self, minimumInteritemSpacingForSectionAt: section) ?? minimumInteritemSpacing
     }
 }
