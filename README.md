@@ -8,7 +8,7 @@ A `UICollectionViewLayout` implementation that aligns the cells to the center.
 ## Installation with CocoaPods
 
 ```ruby
-pod 'CollectionViewCenteredFlowLayout', :git => 'https://github.com/coeur/CollectionViewCenteredFlowLayout.git'
+pod 'CollectionViewCenteredFlowLayout'
 ```
 
 ## Usage
