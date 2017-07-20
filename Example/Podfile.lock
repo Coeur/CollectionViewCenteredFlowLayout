@@ -1,5 +1,5 @@
 PODS:
-  - CollectionViewCenteredFlowLayout (1.0.0)
+  - CollectionViewCenteredFlowLayout (1.0.1)
 
 DEPENDENCIES:
   - CollectionViewCenteredFlowLayout (from `..`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: ".."
 
 SPEC CHECKSUMS:
-  CollectionViewCenteredFlowLayout: 446fcaeb54eee1abbb902c50caac6b2fdcfe3b83
+  CollectionViewCenteredFlowLayout: b95892ba0c0d047e348eb0b64c4ee5b52ff0bf9b
 
 PODFILE CHECKSUM: 3fa6777a7a1e9edde6c8ce74fd0509ef089b71f2
 

@@ -45,7 +45,7 @@ open class CollectionViewCenteredFlowLayout: UICollectionViewFlowLayout {
                 }
                 let currentItemAttributes = layoutAttributes.copy() as! UICollectionViewLayoutAttributes
                 // if the current frame, once stretched to the full row doesn't intersect the previous frame then they are on different rows
-                if previousFrame != nil && !currentItemAttributes.frame.intersects(CGRect(x: -.infinity, y: previousFrame!.origin.y, width: .infinity, height: previousFrame!.size.height)) {
+                if previousFrame != nil && !currentItemAttributes.frame.intersects(CGRect(x: -.greatestFiniteMagnitude, y: previousFrame!.origin.y, width: .infinity, height: previousFrame!.size.height)) {
                     cells.append([])
                 }
                 cells[cells.endIndex - 1].append(currentItemAttributes)
@@ -74,7 +74,7 @@ open class CollectionViewCenteredFlowLayout: UICollectionViewFlowLayout {
                 }
                 let currentItemAttributes = layoutAttributes.copy() as! UICollectionViewLayoutAttributes
                 // if the current frame, once stretched to the full column doesn't intersect the previous frame then they are on different columns
-                if previousFrame != nil && !currentItemAttributes.frame.intersects(CGRect(x: previousFrame!.origin.x, y: -.infinity, width: previousFrame!.size.width, height: .infinity)) {
+                if previousFrame != nil && !currentItemAttributes.frame.intersects(CGRect(x: previousFrame!.origin.x, y: -.greatestFiniteMagnitude, width: previousFrame!.size.width, height: .infinity)) {
                     cells.append([])
                 }
                 cells[cells.endIndex - 1].append(currentItemAttributes)
