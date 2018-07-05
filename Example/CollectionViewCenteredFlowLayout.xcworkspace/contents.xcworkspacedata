@@ -2,12 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/antoinecoeur/Development/UICollectionViewLeftAlignedLayout/Example/CollectionViewCenteredFlowLayout.xcodeproj">
+      location = "group:CollectionViewCenteredFlowLayout.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:CollectionViewCenteredFlowLayout.xcodeproj">
    </FileRef>
 </Workspace>

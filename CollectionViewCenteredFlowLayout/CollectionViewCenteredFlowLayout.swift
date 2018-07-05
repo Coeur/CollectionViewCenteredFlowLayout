@@ -36,13 +36,14 @@ open class CollectionViewCenteredFlowLayout: UICollectionViewFlowLayout {
         // we group copies of the elements from the same row/column
         var representedElements: [UICollectionViewLayoutAttributes] = []
         var cells: [[UICollectionViewLayoutAttributes]] = [[]]
-        var previousFrame: CGRect? = nil
+        var previousFrame: CGRect?
         if scrollDirection == .vertical {
             for layoutAttributes in layoutAttributesForElements {
                 guard layoutAttributes.representedElementKind == nil else {
                     representedElements.append(layoutAttributes)
                     continue
                 }
+                // copying is required to avoid "UICollectionViewFlowLayout cache mismatched frame"
                 let currentItemAttributes = layoutAttributes.copy() as! UICollectionViewLayoutAttributes
                 // if the current frame, once stretched to the full row doesn't intersect the previous frame then they are on different rows
                 if previousFrame != nil && !currentItemAttributes.frame.intersects(CGRect(x: -.greatestFiniteMagnitude, y: previousFrame!.origin.y, width: .infinity, height: previousFrame!.size.height)) {
@@ -72,6 +73,7 @@ open class CollectionViewCenteredFlowLayout: UICollectionViewFlowLayout {
                     representedElements.append(layoutAttributes)
                     continue
                 }
+                // copying is required to avoid "UICollectionViewFlowLayout cache mismatched frame"
                 let currentItemAttributes = layoutAttributes.copy() as! UICollectionViewLayoutAttributes
                 // if the current frame, once stretched to the full column doesn't intersect the previous frame then they are on different columns
                 if previousFrame != nil && !currentItemAttributes.frame.intersects(CGRect(x: previousFrame!.origin.x, y: -.greatestFiniteMagnitude, width: previousFrame!.size.width, height: .infinity)) {

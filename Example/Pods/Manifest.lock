@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: ".."
 
 SPEC CHECKSUMS:
-  CollectionViewCenteredFlowLayout: b95892ba0c0d047e348eb0b64c4ee5b52ff0bf9b
+  CollectionViewCenteredFlowLayout: 9c9dbe7f28dbacadea3330cf7bcd2f26b7ea8836
 
 PODFILE CHECKSUM: 3fa6777a7a1e9edde6c8ce74fd0509ef089b71f2
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.5.3
