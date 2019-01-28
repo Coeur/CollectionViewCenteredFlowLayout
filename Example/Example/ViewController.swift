@@ -8,6 +8,18 @@
 
 import UIKit
 
+#if swift(>=4.2)
+#else
+// Xcode 9 compatibility
+extension RunLoop {
+    public typealias Mode = RunLoopMode
+}
+// Swift 4.0 compatibility
+fileprivate extension RunLoop.Mode {
+    static let `default` = RunLoop.Mode.defaultRunLoopMode
+}
+#endif
+
 let kCellIdentifier = "CellIdentifier"
 let kScrollDirectionIsHorizontal = false
 let kShouldRefresh = false
@@ -29,8 +41,8 @@ class ViewController: UIViewController {
         }
         
         if kShouldRefresh {
-            timer = Timer.scheduledTimer(timeInterval: 0.5, target: self.collectionView, selector: #selector(UICollectionView.reloadData), userInfo: nil, repeats: true)
-            RunLoop.main.add(timer!, forMode: .defaultRunLoopMode)
+            timer = Timer.scheduledTimer(timeInterval: 0.5, target: self.collectionView as Any, selector: #selector(UICollectionView.reloadData), userInfo: nil, repeats: true)
+            RunLoop.main.add(timer!, forMode: .default)
         }
     }
     

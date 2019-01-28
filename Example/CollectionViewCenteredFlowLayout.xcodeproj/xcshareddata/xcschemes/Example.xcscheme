@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "37B6088821FEB15D009CC228"
+               BuildableName = "CollectionViewCenteredFlowLayoutTests.xctest"
+               BlueprintName = "CollectionViewCenteredFlowLayoutTests"
+               ReferencedContainer = "container:CollectionViewCenteredFlowLayout.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

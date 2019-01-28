@@ -1,6 +1,13 @@
 use_frameworks!
-platform :ios, "8.0"
+platform :ios, '8.0'
 
 target :CollectionViewCenteredFlowLayout do
   pod 'CollectionViewCenteredFlowLayout', :path => '..'
+  
+  # best practices
+  pod 'SwiftLint', '~> 0'
+  
+  target 'CollectionViewCenteredFlowLayoutTests' do
+      inherit! :search_paths
+  end
 end

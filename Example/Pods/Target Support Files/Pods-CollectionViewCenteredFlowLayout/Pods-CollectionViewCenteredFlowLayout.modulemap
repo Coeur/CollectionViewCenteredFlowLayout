@@ -1,6 +1,0 @@
-framework module Pods_CollectionViewCenteredFlowLayout {
-  umbrella header "Pods-CollectionViewCenteredFlowLayout-umbrella.h"
-
-  export *
-  module * { export * }
-}

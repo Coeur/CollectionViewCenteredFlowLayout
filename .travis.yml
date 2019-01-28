@@ -1,0 +1,50 @@
+# references:
+# * https://www.objc.io/issues/6-build-tools/travis-ci/
+# * https://github.com/supermarin/xcpretty#usage
+
+matrix:
+  include:
+    - osx_image: xcode10.1
+      env: DESTINATION="iPad Pro (11-inch) (12.1)" SWIFT_VERSION="4.2"
+      
+    - osx_image: xcode10
+      env: DESTINATION="iPhone XS (12.0)" SWIFT_VERSION="4.2"
+      
+    - osx_image: xcode9.4
+      env: DESTINATION="iPhone X (11.4)" SWIFT_VERSION="4.0"
+      
+    - osx_image: xcode9.3
+      env: DESTINATION="iPhone 8 (11.0.1)" SWIFT_VERSION="4.0"
+      
+    - osx_image: xcode9.2
+      env: DESTINATION="iPhone 7 Plus (10.3.1)" SWIFT_VERSION="4.0"
+      
+    - osx_image: xcode9.1
+      env: DESTINATION="iPhone 6s Plus (9.3)" SWIFT_VERSION="4.0"
+      
+    - osx_image: xcode9
+      env: DESTINATION="iPhone 6 Plus (8.4)" SWIFT_VERSION="4.0"
+
+language: objective-c
+cache: cocoapods
+podfile: Example/Podfile
+before_install:
+- gem install cocoapods # Since Travis is not always on latest version
+- gem update xcodeproj # https://github.com/CocoaPods/CocoaPods/issues/7835
+- pod install --repo-update --project-directory=Example
+# Grepping destination device udid
+- DESTINATION_UDID=$(instruments -s devices | grep "$DESTINATION \[" | sed -E 's/.*\[([0-9A-F-]+)\].*/\1/g')
+# Prelaunching simulator to avoid timeout https://github.com/travis-ci/travis-ci/issues/6422
+# (not working with osx_image: xcode10 and newer?)
+#- open -a "simulator" --args -CurrentDeviceUDID $DESTINATION_UDID
+script:
+- set -o pipefail && xcodebuild test
+ `` -enableCodeCoverage YES
+ `` -workspace Example/CollectionViewCenteredFlowLayout.xcworkspace
+ `` -scheme Example
+ `` -sdk iphonesimulator
+ `` -destination "id=$DESTINATION_UDID"
+ `` ONLY_ACTIVE_ARCH=NO
+ `` | xcpretty
+- echo $SWIFT_VERSION > .swift-version
+- pod lib lint

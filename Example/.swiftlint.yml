@@ -1,0 +1,53 @@
+# Find all the available rules by running:
+# Pods/SwiftLint/swiftlint rules
+
+included:
+- ../CollectionViewCenteredFlowLayout
+- .
+
+excluded:
+- Carthage
+- Pods
+
+disabled_rules:
+  - line_length
+  - file_length
+  - force_cast
+  - force_try
+  - comma
+  - trailing_comma
+
+opt_in_rules:
+#performance:
+  - empty_count
+  - empty_string
+  - first_where
+  - last_where
+#lint:
+  - overridden_super_call
+  - prohibited_super_call
+  - yoda_condition
+  - unused_import
+  - unused_private_declaration
+#idiomatic:
+  - redundant_nil_coalescing
+  - fatal_error_message
+  - nimble_operator
+#style:
+  - operator_usage_whitespace
+  - number_separator
+  - switch_case_on_newline
+  - closure_spacing
+  - conditional_returns_on_newline
+  - unneeded_parentheses_in_closure_argument
+  - vertical_parameter_alignment_on_call
+  - implicit_return
+  - collection_alignment
+
+vertical_whitespace:
+ max_empty_lines: 2
+trailing_whitespace:
+ ignores_empty_lines: true
+ ignores_comments: true
+identifier_name:
+ min_length: 1
