@@ -58,7 +58,8 @@ open class CollectionViewCenteredFlowLayout: UICollectionViewFlowLayout {
                 }
                 let evaluatedSectionInset = evaluatedSectionInsetForSection(at: section)
                 let evaluatedMinimumInteritemSpacing = evaluatedMinimumInteritemSpacingForSection(at: section)
-                var origin = (collectionView.bounds.width + evaluatedSectionInset.left - evaluatedSectionInset.right - group.reduce(0, { $0 + $1.frame.size.width }) - CGFloat(group.count - 1) * evaluatedMinimumInteritemSpacing) / 2
+                let evaluatedCollectionView = (collectionView.bounds.width + evaluatedSectionInset.left - evaluatedSectionInset.right - group.reduce(0, { $0 + $1.frame.size.width }) - CGFloat(group.count - 1) * evaluatedMinimumInteritemSpacing)
+                var origin = evaluatedCollectionView / 2
                 // we reposition each element of a group
                 return group.map {
                     $0.frame.origin.x = origin
@@ -88,7 +89,8 @@ open class CollectionViewCenteredFlowLayout: UICollectionViewFlowLayout {
                 }
                 let evaluatedSectionInset = evaluatedSectionInsetForSection(at: section)
                 let evaluatedMinimumInteritemSpacing = evaluatedMinimumInteritemSpacingForSection(at: section)
-                var origin = (collectionView.bounds.height + evaluatedSectionInset.top - evaluatedSectionInset.bottom - group.reduce(0, { $0 + $1.frame.size.height }) - CGFloat(group.count - 1) * evaluatedMinimumInteritemSpacing) / 2
+                let evaluatedCollectionView = (collectionView.bounds.height + evaluatedSectionInset.top - evaluatedSectionInset.bottom - group.reduce(0, { $0 + $1.frame.size.height }) - CGFloat(group.count - 1) * evaluatedMinimumInteritemSpacing)
+                var origin = evaluatedCollectionView / 2
                 // we reposition each element of a group
                 return group.map {
                     $0.frame.origin.y = origin
