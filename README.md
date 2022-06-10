@@ -3,7 +3,7 @@ UICollectionView Centered Flow Layout
 
 A `UICollectionViewLayout` implementation that aligns the cells to the center. 
 
-<img src="https://raw.githubusercontent.com/coeur/CollectionViewCenteredFlowLayout/master/screenshot.png" />
+<img src="https://raw.githubusercontent.com/coeur/CollectionViewCenteredFlowLayout/main/screenshot.png" />
 
 ## Installation with CocoaPods
 
@@ -19,4 +19,4 @@ Simply set `CollectionViewCenteredFlowLayout` as the layout object for your coll
 
 ## License
 
-`CollectionViewCenteredFlowLayout` is released under the [MIT license](https://github.com/coeur/CollectionViewCenteredFlowLayout/blob/master/LICENSE).
+`CollectionViewCenteredFlowLayout` is released under the [MIT license](https://github.com/coeur/CollectionViewCenteredFlowLayout/blob/main/LICENSE).
