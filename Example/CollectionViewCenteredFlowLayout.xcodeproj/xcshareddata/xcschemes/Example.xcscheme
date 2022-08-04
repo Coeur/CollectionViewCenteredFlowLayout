@@ -27,6 +27,15 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "377A00E91EC17905003CC399"
+            BuildableName = "CollectionViewCenteredFlowLayout.app"
+            BlueprintName = "CollectionViewCenteredFlowLayout"
+            ReferencedContainer = "container:CollectionViewCenteredFlowLayout.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -39,17 +48,6 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "377A00E91EC17905003CC399"
-            BuildableName = "CollectionViewCenteredFlowLayout.app"
-            BlueprintName = "CollectionViewCenteredFlowLayout"
-            ReferencedContainer = "container:CollectionViewCenteredFlowLayout.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -71,8 +69,6 @@
             ReferencedContainer = "container:CollectionViewCenteredFlowLayout.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

@@ -104,9 +104,9 @@ open class CollectionViewCenteredFlowLayout: UICollectionViewFlowLayout {
 
 extension UICollectionViewFlowLayout {
     internal func evaluatedSectionInsetForSection(at section: Int) -> UIEdgeInsets {
-        return (collectionView?.delegate as? UICollectionViewDelegateFlowLayout)?.collectionView?(collectionView!, layout: self, insetForSectionAt: section) ?? sectionInset
+        (collectionView?.delegate as? UICollectionViewDelegateFlowLayout)?.collectionView?(collectionView!, layout: self, insetForSectionAt: section) ?? sectionInset
     }
     internal func evaluatedMinimumInteritemSpacingForSection(at section: Int) -> CGFloat {
-        return (collectionView?.delegate as? UICollectionViewDelegateFlowLayout)?.collectionView?(collectionView!, layout: self, minimumInteritemSpacingForSectionAt: section) ?? minimumInteritemSpacing
+        (collectionView?.delegate as? UICollectionViewDelegateFlowLayout)?.collectionView?(collectionView!, layout: self, minimumInteritemSpacingForSectionAt: section) ?? minimumInteritemSpacing
     }
 }

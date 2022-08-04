@@ -55,11 +55,11 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        2
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return section == 0 ? 20 : 80
+        section == 0 ? 20 : 80
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -73,17 +73,17 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if kScrollDirectionIsHorizontal {
-            return CGSize(width: 60, height: CGFloat((arc4random() % 120) + 60))
+            return CGSize(width: 60, height: CGFloat(Int.random(in: 60..<180)))
         } else {
-            return CGSize(width: CGFloat((arc4random() % 120) + 60), height: 60)
+            return CGSize(width: CGFloat(Int.random(in: 60..<180)), height: 60)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return section == 0 ? 15 : 5
+        section == 0 ? 15 : 5
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
 }

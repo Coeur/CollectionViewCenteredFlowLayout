@@ -5,8 +5,8 @@
 //  Created by Antoine Cœur on 2019/1/28.
 //
 
-import XCTest
 import CollectionViewCenteredFlowLayout
+import XCTest
 
 class CollectionViewCenteredFlowLayoutTests: XCTestCase {
 

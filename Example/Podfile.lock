@@ -1,13 +1,13 @@
 PODS:
-  - CollectionViewCenteredFlowLayout (1.0.1)
-  - SwiftLint (0.30.1)
+  - CollectionViewCenteredFlowLayout (1.0.4)
+  - SwiftLint (0.48.0)
 
 DEPENDENCIES:
   - CollectionViewCenteredFlowLayout (from `..`)
   - SwiftLint (~> 0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - SwiftLint
 
 EXTERNAL SOURCES:
@@ -15,9 +15,9 @@ EXTERNAL SOURCES:
     :path: ".."
 
 SPEC CHECKSUMS:
-  CollectionViewCenteredFlowLayout: 86028c49b5c8ceec7ccc30a29fe88117234b82f3
-  SwiftLint: a54bf1fe12b55c68560eb2a7689dfc81458508f7
+  CollectionViewCenteredFlowLayout: fb1aa0e869738abda6ef550ffb15afe765120aa0
+  SwiftLint: 284cea64b6187c5d6bd83e9a548a64104d546447
 
-PODFILE CHECKSUM: df9bc6c6885b9e8025771f6bf300d5a7ab0d0540
+PODFILE CHECKSUM: 643725527ed4679c4abf86eeaf8e96d4f666f2e6
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.11.3
