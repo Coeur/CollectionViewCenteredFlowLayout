@@ -1,6 +1,6 @@
 PODS:
-  - CollectionViewCenteredFlowLayout (1.0.4)
-  - SwiftLint (0.48.0)
+  - CollectionViewCenteredFlowLayout (1.0.5)
+  - SwiftLint (0.52.4)
 
 DEPENDENCIES:
   - CollectionViewCenteredFlowLayout (from `..`)
@@ -15,9 +15,9 @@ EXTERNAL SOURCES:
     :path: ".."
 
 SPEC CHECKSUMS:
-  CollectionViewCenteredFlowLayout: fb1aa0e869738abda6ef550ffb15afe765120aa0
-  SwiftLint: 284cea64b6187c5d6bd83e9a548a64104d546447
+  CollectionViewCenteredFlowLayout: c4969525f5add013d7ba57df8a98a14446b1e083
+  SwiftLint: 1cc5cd61ba9bacb2194e340aeb47a2a37fda00b3
 
-PODFILE CHECKSUM: 643725527ed4679c4abf86eeaf8e96d4f666f2e6
+PODFILE CHECKSUM: 57b92d11d7ccb4d5890d9d384de3da3b004805de
 
 COCOAPODS: 1.11.3

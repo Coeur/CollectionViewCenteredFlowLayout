@@ -28,8 +28,6 @@ opt_in_rules:
   - overridden_super_call
   - prohibited_super_call
   - yoda_condition
-  - unused_import
-  - unused_declaration
 #idiomatic:
   - redundant_nil_coalescing
   - fatal_error_message
@@ -45,6 +43,11 @@ opt_in_rules:
   - implicit_return
   - collection_alignment
   - sorted_imports
+
+analyzer_rules:
+#lint:
+  - unused_import
+  - unused_declaration
 
 vertical_whitespace:
  max_empty_lines: 2

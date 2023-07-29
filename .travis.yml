@@ -4,15 +4,12 @@
 
 matrix:
   include:
-    - osx_image: xcode13.4
-      env: DESTINATION="iPad Pro (9.7-inch) (15.5)" SWIFT_VERSION="5.0"
-      
-    - osx_image: xcode13.4
-      env: DESTINATION="iPhone 13 Pro Max (15.0)" SWIFT_VERSION="5.0"
-      
-    - osx_image: xcode13.4
-      env: DESTINATION="iPhone 8 (14.5)" SWIFT_VERSION="5.0"
-      
+    - osx_image: xcode14.2
+      env: DESTINATION="iPad Pro (11-inch) (16.2)" SWIFT_VERSION="5.0"
+
+    - osx_image: xcode14.2
+      env: DESTINATION="iPhone 14 Pro Max (16.0)" SWIFT_VERSION="5.0"
+
     - osx_image: xcode13.1
       env: DESTINATION="iPhone 12 mini (15.0)" SWIFT_VERSION="4.0"
       
